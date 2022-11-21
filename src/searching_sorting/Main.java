@@ -30,7 +30,7 @@ public class Main {
 				case '1' -> Searching.LinearSearching();
 				case '2' -> Searching.BinarySearching();
 				case '3' -> Sorting.InsertionSorting();
-				case '4' -> System.out.println("O(n*log(n)) type of sorting");
+				case '4' -> Sorting.HeapSorting();
 				case '5' -> System.out.println("Sorting performance");
 				case 'q', 'Q' -> quit = true;
 				default -> System.out.println("Input invalid. Please try again below.");
