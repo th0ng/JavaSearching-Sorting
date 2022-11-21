@@ -22,29 +22,14 @@ public class Main {
 
 			System.out.print("Your choice: ");
 			char userInput = scanner.next().charAt(0);
+			System.out.println();
 
+
+			//Switch loop for different user inputs
 			switch (userInput) {
-				case '1' -> {
-					System.out.print("In the list are values 0, ..., 9; which value would you like to search with linear search? ");
-					int linearSearchItem = (int) scanner.next().charAt(0);
-					System.out.println();
-					int result = Searching.LinearSearching(linearSearchItem);
-					if (result == -1)
-						System.out.println("Not found");
-					else
-						System.out.println("Found");
-				}
-				case '2' -> {
-					System.out.println("In the list are values 0, ..., 9; which value would you like to search with linear search? ");
-					int binarySearchItem = (int) scanner.next().charAt(0);
-					System.out.println();
-					int result = Searching.BinarySearching(binarySearchItem);
-					if (result == -1)
-						System.out.println("Not found");
-					else
-						System.out.println("Found");
-				}
-				case '3' -> System.out.println("O(n^2) type of sorting");
+				case '1' -> Searching.LinearSearching();
+				case '2' -> Searching.BinarySearching();
+				case '3' -> Sorting.InsertionSorting();
 				case '4' -> System.out.println("O(n*log(n)) type of sorting");
 				case '5' -> System.out.println("Sorting performance");
 				case 'q', 'Q' -> quit = true;
