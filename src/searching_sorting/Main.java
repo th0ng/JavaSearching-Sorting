@@ -24,32 +24,31 @@ public class Main {
 			char userInput = scanner.next().charAt(0);
 
 			switch (userInput) {
-				case '1':
+				case '1' -> {
 					System.out.print("In the list are values 0, ..., 9; which value would you like to search with linear search? ");
-					char linearSearchItem = scanner.next().charAt(0);
+					int linearSearchItem = (int) scanner.next().charAt(0);
 					System.out.println();
-					int linearSearchedItemInt = Character.getNumericValue(linearSearchItem);
-					System.out.println(LinearSearching.LinearSearching(linearSearchedItemInt) + "\n");
-					break;
-				case '2':
-					System.out.println("Binary searching will be implement soon.");
-					break;
-				case '3':
-					System.out.println("O(n^2) type of sorting");
-					break;
-				case '4':
-					System.out.println("O(n*log(n)) type of sorting");
-					break;
-				case '5':
-					System.out.println("Sorting performance");
-					break;
-				case 'q':
-				case 'Q':
-					quit = true;
-					break;
-				default:
-					System.out.println("Input invalid. Please try again below.");
-					break;
+					int result = Searching.LinearSearching(linearSearchItem);
+					if (result == -1)
+						System.out.println("Not found");
+					else
+						System.out.println("Found");
+				}
+				case '2' -> {
+					System.out.println("In the list are values 0, ..., 9; which value would you like to search with linear search? ");
+					int binarySearchItem = (int) scanner.next().charAt(0);
+					System.out.println();
+					int result = Searching.BinarySearching(binarySearchItem);
+					if (result == -1)
+						System.out.println("Not found");
+					else
+						System.out.println("Found");
+				}
+				case '3' -> System.out.println("O(n^2) type of sorting");
+				case '4' -> System.out.println("O(n*log(n)) type of sorting");
+				case '5' -> System.out.println("Sorting performance");
+				case 'q', 'Q' -> quit = true;
+				default -> System.out.println("Input invalid. Please try again below.");
 			}
 		}
 
