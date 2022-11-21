@@ -25,7 +25,11 @@ public class Main {
 
 			switch (userInput) {
 				case '1':
-					System.out.println("Linear searching will be implement soon.");
+					System.out.print("In the list are values 0, ..., 9; which value would you like to search with linear search? ");
+					char linearSearchItem = scanner.next().charAt(0);
+					System.out.println();
+					int linearSearchedItemInt = Character.getNumericValue(linearSearchItem);
+					System.out.println(LinearSearching.LinearSearching(linearSearchedItemInt) + "\n");
 					break;
 				case '2':
 					System.out.println("Binary searching will be implement soon.");
