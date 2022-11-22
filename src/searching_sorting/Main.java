@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Test");
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -31,7 +30,7 @@ public class Main {
 				case '2' -> Searching.BinarySearching();
 				case '3' -> Sorting.InsertionSorting();
 				case '4' -> Sorting.HeapSorting();
-				case '5' -> System.out.println("Sorting performance");
+				case '5' -> SortingPerformance.SortingPerformanceToString();
 				case 'q', 'Q' -> quit = true;
 				default -> System.out.println("Input invalid. Please try again below.");
 			}

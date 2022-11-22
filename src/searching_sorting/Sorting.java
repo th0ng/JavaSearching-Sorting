@@ -1,7 +1,16 @@
 package searching_sorting;
 
+import java.util.Random;
+
 public class Sorting {
-	static final int[] array = new int[] {-93, -36, 25, 44, -30, -21, 34, 56, 82, 64};
+	static int[] array = new int[10];
+
+	private static void createRandomArray(int[] array) {
+		Random rd = new Random();
+		for (int i = 0; i < array.length; i++) {
+			array[i] = rd.nextInt();
+		}
+	}
 
 	private static void insertionSorting(int[] array) {
 		for (int i = 0; i < array.length; i++) {
@@ -17,18 +26,17 @@ public class Sorting {
 	}
 
 	public static void InsertionSorting() {
-		int[] arrayToSort = new int[array.length];
-		System.arraycopy(array, 0, arrayToSort, 0, array.length);
+		createRandomArray(array);
 
 		System.out.println("Data set before insertion sorting:");
 		for (int j : array)
 			System.out.print(j + " ");
 		System.out.println("\n");
 
-		insertionSorting(arrayToSort);
+		insertionSorting(array);
 
 		System.out.println("Data set after insertion sorting:");
-		for (int j: arrayToSort)
+		for (int j: array)
 			System.out.print(j + " ");
 		System.out.println("\n");
 	}
@@ -81,18 +89,17 @@ public class Sorting {
 	}
 
 	public static void HeapSorting() {
-		int[] arrayToSort = new int[array.length];
-		System.arraycopy(array, 0, arrayToSort, 0, array.length);
+		createRandomArray(array);
 
 		System.out.println("Data set before insertion sorting:");
 		for (int j : array)
 			System.out.print(j + " ");
 		System.out.println("\n");
 
-		heapSort(arrayToSort);
+		heapSort(array);
 
 		System.out.println("Data set after insertion sorting:");
-		for (int j: arrayToSort)
+		for (int j: array)
 			System.out.print(j + " ");
 		System.out.println("\n");
 	}
