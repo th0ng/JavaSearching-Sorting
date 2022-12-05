@@ -183,22 +183,36 @@ public class SortingPerformance {
 		array[j] = temp;
 	}
 
-	static int partition(int[] array, int low, int high) {
-		int pivot = array[high];
-		//index of smaller element
-		//and indicates the right position of pivot found so far
-		int i = (low -1);
+	private static int partition(int[] array, int min, int max) {
+		int partitionelement;
+		int left, right;
+		int middle = (min + max) / 2;
 
-		for (int j = low; j <= high; j++) {
-			//if current element is smaller than the pivot
-			if (array[j] < pivot) {
-				//increment index of smaller element
-				i++;
-				swap(array, i, j);
+		//use the middle data element as the partition element
+		partitionelement = array[middle];
+
+		//move it out of the way right now
+		swap(array, middle, min);
+
+		left = min;
+		right = max;
+
+		while (left < right) {
+			//search for an element that is > the partition element
+			while (left < right && array[left] < partitionelement) {
+				left++;
 			}
+			//search for an element that is < the partition element
+			while (array[right] > partitionelement) {
+				right--;
+			}
+			//swap the elements
+			if (left < right)
+				swap(array, left, right);
 		}
-		swap(array, i+1, high);
-		return (i+1);
+		//move the partition element into place
+		swap(array, min, right);
+		return right;
 	}
 
 	static void quickSort(int[] array, int low, int high) {
@@ -217,6 +231,7 @@ public class SortingPerformance {
 		for (int i = 0; i < array.length; i++) {
 			long start = System.currentTimeMillis();
 			quickSort(array[i], 0, array[i].length -1);
+			System.out.println(Arrays.toString(array[i]));
 			long end = System.currentTimeMillis();
 			result[i] = (int) (end - start);
 		}
