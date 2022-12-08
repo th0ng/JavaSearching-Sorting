@@ -183,66 +183,91 @@ public class SortingPerformance {
 		array[j] = temp;
 	}
 
-	private static int partition(int[] array, int min, int max) {
+	private static int[] partition(int[] array, int min, int max) {
 		int partitionelement;
 		int left, right;
 		int middle = (min + max) / 2;
-
-		//use the middle data element as the partition element
+		int comparisonCount = 0;
+		// use the middle data element as the partition element
 		partitionelement = array[middle];
 
-		//move it out of the way right now
+		// move it out of the way right now
 		swap(array, middle, min);
 
 		left = min;
 		right = max;
 
 		while (left < right) {
-			//search for an element that is > the partition element
+			// search for an element that is > the partition element
 			while (left < right && array[left] < partitionelement) {
 				left++;
+				comparisonCount++;
 			}
-			//search for an element that is < the partition element
+			// search for an element that is < the partition element
 			while (array[right] > partitionelement) {
 				right--;
+				comparisonCount++;
 			}
-			//swap the elements
+			// swap the elements
 			if (left < right)
 				swap(array, left, right);
 		}
-		//move the partition element into place
+		// move the partition element into place
 		swap(array, min, right);
-		return right;
+		return new int[] { right, comparisonCount };
 	}
 
-	static void quickSort(int[] array, int low, int high) {
+	static int quickSort(int[] array, int low, int high) {
+		int comparisonCount = 0;
 		if (low < high) {
-			int pi = partition(array, low, high);
-
-			quickSort(array, low, pi -1);
-			quickSort(array, pi + 1, high);
+			int pi = partition(array, low, high)[0];
+			comparisonCount += partition(array, low, high)[1];
+			comparisonCount += quickSort(array, low, pi - 1);
+			comparisonCount += quickSort(array, pi + 1, high);
 		}
+		return comparisonCount;
 	}
 
-	static int[] QuickSort() {
+	static int[][] QuickSort() {
 		for (int[] ints : array)
 			createRandomArray(ints);
-		int[] result = new int[10];
+		int[][] result = new int[10][];
 		for (int i = 0; i < array.length; i++) {
 			long start = System.currentTimeMillis();
-			quickSort(array[i], 0, array[i].length -1);
-			System.out.println(Arrays.toString(array[i]));
+			int comparisonCount = quickSort(array[i], 0, array[i].length - 1);
 			long end = System.currentTimeMillis();
-			result[i] = (int) (end - start);
+			result[i] = new int[] { (int) (end - start), comparisonCount };
 		}
 		return result;
 	}
 
-
 	public static void SortingPerformanceToString() {
-
-		System.out.println(Arrays.deepToString(MergeSort()));
-		System.out.println(Arrays.deepToString(InsertionSort()));
-		System.out.println(Arrays.toString(QuickSort()));
+		int[][] selectionSort = SelectionSort();
+		int[][] insertionSort = InsertionSort();
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n", "", 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000);
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
+				"selectionSort.random.comparisons",
+				selectionSort[0][1], selectionSort[1][1], selectionSort[2][1], selectionSort[3][1],
+				selectionSort[4][1], selectionSort[5][1], selectionSort[6][1], selectionSort[7][1],
+				selectionSort[8][1], selectionSort[9][1]
+				);
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
+				"selectionSort.random.ms",
+				selectionSort[0][0], selectionSort[1][0], selectionSort[2][0], selectionSort[3][0],
+				selectionSort[4][0], selectionSort[5][0], selectionSort[6][0], selectionSort[7][0],
+				selectionSort[8][0], selectionSort[9][0]
+				);
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
+				"insertionSort.random.comparisons",
+				insertionSort[0][1], insertionSort[1][1], insertionSort[2][1], insertionSort[3][1],
+				insertionSort[4][1], insertionSort[5][1], insertionSort[6][1], insertionSort[7][1],
+				insertionSort[8][1], insertionSort[9][1]
+				);
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
+				"insertionSort.random.ms",
+				insertionSort[0][0], insertionSort[1][0], insertionSort[2][0], insertionSort[3][0],
+				insertionSort[4][0], insertionSort[5][0], insertionSort[6][0], insertionSort[7][0],
+				insertionSort[8][0], insertionSort[9][0]
+		);
 	}
 }
