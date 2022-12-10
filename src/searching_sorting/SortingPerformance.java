@@ -244,30 +244,57 @@ public class SortingPerformance {
 	public static void SortingPerformanceToString() {
 		int[][] selectionSort = SelectionSort();
 		int[][] insertionSort = InsertionSort();
+		int[][] mergeSort = MergeSort();
+		int[][] quickSort = QuickSort();
 		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n", "", 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000);
 		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
 				"selectionSort.random.comparisons",
 				selectionSort[0][1], selectionSort[1][1], selectionSort[2][1], selectionSort[3][1],
 				selectionSort[4][1], selectionSort[5][1], selectionSort[6][1], selectionSort[7][1],
 				selectionSort[8][1], selectionSort[9][1]
-				);
+		);
 		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
 				"selectionSort.random.ms",
 				selectionSort[0][0], selectionSort[1][0], selectionSort[2][0], selectionSort[3][0],
 				selectionSort[4][0], selectionSort[5][0], selectionSort[6][0], selectionSort[7][0],
 				selectionSort[8][0], selectionSort[9][0]
-				);
+		);
 		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
 				"insertionSort.random.comparisons",
 				insertionSort[0][1], insertionSort[1][1], insertionSort[2][1], insertionSort[3][1],
 				insertionSort[4][1], insertionSort[5][1], insertionSort[6][1], insertionSort[7][1],
 				insertionSort[8][1], insertionSort[9][1]
-				);
+		);
 		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
 				"insertionSort.random.ms",
 				insertionSort[0][0], insertionSort[1][0], insertionSort[2][0], insertionSort[3][0],
 				insertionSort[4][0], insertionSort[5][0], insertionSort[6][0], insertionSort[7][0],
 				insertionSort[8][0], insertionSort[9][0]
 		);
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
+				"mergeSort.random.comparisons",
+				mergeSort[0][1], mergeSort[1][1], mergeSort[2][1], mergeSort[3][1],
+				mergeSort[4][1], mergeSort[5][1], mergeSort[6][1], mergeSort[7][1],
+				mergeSort[8][1], mergeSort[9][1]
+		);
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
+				"mergeSort.random.ms",
+				mergeSort[0][0], mergeSort[1][0], mergeSort[2][0], mergeSort[3][0],
+				mergeSort[4][0], mergeSort[5][0], mergeSort[6][0], mergeSort[7][0],
+				mergeSort[8][0], mergeSort[9][0]
+		);
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
+				"quickSort.random.comparisons",
+				quickSort[0][1], quickSort[1][1], quickSort[2][1], quickSort[3][1],
+				quickSort[4][1], quickSort[5][1], quickSort[6][1], quickSort[7][1],
+				quickSort[8][1], quickSort[9][1]
+		);
+		System.out.format("%32s%10d%10d%10d%10d%10d%10d%10d%10d%10d%10d\n",
+				"quickSort.random.ms",
+				quickSort[0][0], quickSort[1][0], quickSort[2][0], quickSort[3][0],
+				quickSort[4][0], quickSort[5][0], quickSort[6][0], quickSort[7][0],
+				quickSort[8][0], quickSort[9][0]
+		);
+		System.out.println("");
 	}
 }
